@@ -2,3 +2,16 @@ steps:
   - name: node
     entrypoint: npm
     args: ["install"]
+
+  - name: script
+    entrypoint: bash
+    secretEnv: ['HELLO']
+    args:
+      - '-c'
+      - |
+        echo "HELLO" $$HELLO
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/708036783844/secrets/HELLO/versions/1
+    env: 'HELLO'
