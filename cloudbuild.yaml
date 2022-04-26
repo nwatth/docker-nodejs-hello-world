@@ -13,5 +13,5 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/708036783844/secrets/HELLO/versions/1
+  - versionName: projects/708036783844/secrets/HELLO/versions/2
     env: 'HELLO'
