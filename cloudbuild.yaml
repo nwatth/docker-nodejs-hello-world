@@ -3,8 +3,8 @@ steps:
     entrypoint: npm
     args: ["install"]
 
-  - name: script
-    entrypoint: bash
+  - name: hashicorp/terraform
+    entrypoint: sh
     secretEnv: ['HELLO']
     args:
       - '-c'
