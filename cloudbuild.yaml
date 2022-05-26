@@ -11,9 +11,5 @@ steps:
       - '&&'
       - 'docker build .'
 
-images:
-  - 'gcr.io/docker-nodejs-hello-world:${SHORT_SHA}'
-  - 'gcr.io/docker-nodejs-hello-world:latest'
-
 options:
   logging: CLOUD_LOGGING_ONLY
