@@ -20,10 +20,10 @@ steps:
       - |
         echo "HELLO"
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/708036783844/secrets/HELLO/versions/latest
-      env: 'HELLO'
+        #availableSecrets:
+        #secretManager:
+        #- versionName: projects/708036783844/secrets/HELLO/versions/latest
+        #env: 'HELLO'
 
 images:
   - 'gcr.io/${PROJECT_ID}/${REPO_NAME}'
