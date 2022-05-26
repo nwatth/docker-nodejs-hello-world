@@ -2,15 +2,15 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: 'docker-build'
     entrypoint: 'bash'
-    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker build -t asia.gcr.io/tqm-infra-sandbox-343707/docker-nodejs-hello-world .']
+    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker build -t asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world .']
 
   - name: 'gcr.io/cloud-builders/docker'
     id: 'docker-push'
     entrypoint: 'bash'
     waitFor: ['docker-build']
-    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker push asia.gcr.io/tqm-infra-sandbox-343707/docker-nodejs-hello-world']
+    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker push asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world']
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
-images: ['asia.gcr.io/tqm-infra-sandbox-343707/docker-nodejs-hello-world']
+images: ['asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world']
