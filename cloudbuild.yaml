@@ -9,7 +9,7 @@ steps:
       - '-c'
       - 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD'
       - '&&'
-      - 'docker build .'
+      - 'docker build -t gcr.io/docker-nodejs-hello-world:latest .'
 
 options:
   logging: CLOUD_LOGGING_ONLY
