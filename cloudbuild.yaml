@@ -3,9 +3,13 @@ steps:
     entrypoint: npm
     args: ["install"]
 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${SHORT_SHA}', '-f', '${TRIGGER_BUILD_CONFIG_PATH}']
+
   - name: hashicorp/terraform
     entrypoint: sh
-    secretEnv: ['HELLO']
+    secretEnv:
+      - 'HELLO'
     args:
       - '-c'
       - |
@@ -13,5 +17,8 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/708036783844/secrets/HELLO/versions/latest
-    env: 'HELLO'
+    - versionName: projects/708036783844/secrets/HELLO/versions/latest
+      env: 'HELLO'
+
+images:
+  - 'gcr.io/${PROJECT_ID}/${REPO_NAME}'
