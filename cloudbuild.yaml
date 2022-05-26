@@ -5,8 +5,7 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
-    secretEnv: ['DOCKER_USERNAME', 'DOCKER_PASSWORD']
-    args: ['-c', 'docker login --username=$$DOCKER_USERNAME --password=$$DOCKER_PASSWORD']
+    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${SHORT_SHA}', '.']
@@ -24,10 +23,6 @@ availableSecrets:
   secretManager:
     - versionName: projects/708036783844/secrets/HELLO/versions/latest
       env: 'HELLO'
-    - versionName: projects/708036783844/secrets/DOCKER_USERNAME/versions/1
-      env: 'DOCKER_USERNAME'
-    - versionName: projects/708036783844/secrets/DOCKER_PASSWORD/versions/1
-      env: 'DOCKER_PASSWORD'
 
 images:
   - 'gcr.io/${PROJECT_ID}/${REPO_NAME}'
