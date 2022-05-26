@@ -4,6 +4,9 @@ steps:
     args: ["install"]
 
   - name: 'gcr.io/cloud-builders/docker'
+    args: ['login']
+
+  - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${SHORT_SHA}', '.']
 
   - name: hashicorp/terraform
