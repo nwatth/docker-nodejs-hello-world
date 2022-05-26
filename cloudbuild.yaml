@@ -9,11 +9,11 @@ steps:
       - '-c'
       - 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD'
       - '&&'
-      - 'docker build -t asia.gcr.io/docker-nodejs-hello-world:${SHORT_SHA} -t asia.gcr.io/docker-nodejs-hello-world:latest .'
+      - 'docker build -t gcr.io/docker-nodejs-hello-world:${SHORT_SHA} -t gcr.io/docker-nodejs-hello-world:latest .'
 
 images:
-  - 'asia.gcr.io/docker-nodejs-hello-world:${SHORT_SHA}'
-  - 'asia.gcr.io/docker-nodejs-hello-world:latest'
+  - 'gcr.io/docker-nodejs-hello-world:${SHORT_SHA}'
+  - 'gcr.io/docker-nodejs-hello-world:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
