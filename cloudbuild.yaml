@@ -2,21 +2,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: 'docker-build'
     entrypoint: 'bash'
-    args:
-      - '-c'
-      - 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD'
-      - '&&'
-      - 'docker build -t gcr.io/docker-nodejs-hello-world:latest .'
+    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker build -t gcr.io/docker-nodejs-hello-world:latest .']
 
   - name: 'gcr.io/cloud-builders/docker'
     id: 'docker-push'
     entrypoint: 'bash'
     waitFor: ['docker-build']
-    args:
-      - '-c'
-      - 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD'
-      - '&&'
-      - 'docker push gcr.io/docker-nodejs-hello-world:latest'
+    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD', '&&', 'docker push gcr.io/docker-nodejs-hello-world:latest']
 
 options:
   logging: CLOUD_LOGGING_ONLY
