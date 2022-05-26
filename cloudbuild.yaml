@@ -5,10 +5,11 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
-    args: ['-c', 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD']
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${SHORT_SHA}', '.']
+    args:
+      - '-c'
+      - 'docker login --username=$_DOCKER_USERNAME --password=$_DOCKER_PASSWORD'
+      - '&&'
+      - 'docker build -t gcr.io/${PROJECT_ID}/${REPO_NAME}:${SHORT_SHA} .'
 
   - name: hashicorp/terraform
     entrypoint: sh
