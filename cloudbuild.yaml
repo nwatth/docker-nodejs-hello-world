@@ -24,9 +24,9 @@ availableSecrets:
   secretManager:
     - versionName: projects/708036783844/secrets/HELLO/versions/latest
       env: 'HELLO'
-    - versionName: projects/708036783844/secrets/DOCKER_USERNAME
+    - versionName: projects/708036783844/secrets/DOCKER_USERNAME/versions/1
       env: 'DOCKER_USERNAME'
-    - versionName: projects/708036783844/secrets/DOCKER_PASSWORD
+    - versionName: projects/708036783844/secrets/DOCKER_PASSWORD/versions/1
       env: 'DOCKER_PASSWORD'
 
 images:
