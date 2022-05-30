@@ -4,7 +4,6 @@ steps:
     args:
       - 'build'
       - '-t asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA'
-      - '-t asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:latest'
       - '.'
     env:
       - 'PORT=80'
