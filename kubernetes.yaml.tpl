@@ -15,10 +15,10 @@ spec:
         run: SERVICE_NAME
     spec:
       containers:
-      - name: SERVICE_NAME
-        image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/IMAGE_NAME:COMMIT_SHA
-        ports:
-		- containerPort: 3000
+        - name: SERVICE_NAME
+          image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/IMAGE_NAME:COMMIT_SHA
+          ports:
+            - containerPort: 3000
 ---
 kind: Service
 apiVersion: v1
@@ -28,7 +28,7 @@ spec:
   selector:
     run: SERVICE_NAME
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 3000
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
   type: NodePort
