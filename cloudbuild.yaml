@@ -18,7 +18,7 @@ steps:
       - '-c'
       - |
         sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
-        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > docker-nodejs-hello-world/kubernetes.yaml
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml
 
   - id: Deploy
     name: 'gcr.io/cloud-builders/kubectl'

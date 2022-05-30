@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-cloudbuild
-        image: asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:COMMIT_SHA
+        image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/docker-nodejs-hello-world:COMMIT_SHA
         ports:
         - containerPort: 3000
 ---
