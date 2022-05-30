@@ -1,3 +1,9 @@
-FROM heroku/nodejs
+FROM node
 
-CMD bin/web
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+RUN npm run build
+
+CMD ["npm", "run", "start"]
