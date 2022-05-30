@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: CONTAINER_CLUSTER
+  name: SERVICE_NAME
   labels:
-    app: CONTAINER_CLUSTER
+    app: SERVICE_NAME
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: CONTAINER_CLUSTER
+      app: SERVICE_NAME
   template:
     metadata:
       labels:
-        app: CONTAINER_CLUSTER
+        app: SERVICE_NAME
     spec:
       containers:
-      - name: CONTAINER_CLUSTER
+      - name: SERVICE_NAME
         image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/IMAGE_NAME:COMMIT_SHA
         ports:
         - containerPort: 3000
@@ -23,10 +23,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: CONTAINER_CLUSTER
+  name: SERVICE_NAME
 spec:
   selector:
-    app: CONTAINER_CLUSTER
+    app: SERVICE_NAME
   ports:
   - protocol: TCP
     port: 80
