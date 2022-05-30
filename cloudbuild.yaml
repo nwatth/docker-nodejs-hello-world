@@ -1,9 +1,14 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    id: 'BUILD'
+    id: 'BUILD SHORT_SHA'
     args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'BUILD LATEST'
+    args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:latest', '.']
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
-images: ['asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world']
+images:
+  - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world'
