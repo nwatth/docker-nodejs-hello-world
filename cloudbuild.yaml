@@ -5,10 +5,11 @@ steps:
       - 'PORT=3000'
     args:
       - 'build'
-      - |
-        -t asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA
-        -t asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:latest
-        .
+      - '-t'
+      - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA'
+      - '-t'
+      - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:latest'
+      - '.'
 
   - id: Generate manifest
     name: 'gcr.io/cloud-builders/gcloud'
