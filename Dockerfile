@@ -1,3 +1,3 @@
-FROM docker.io/heroku/nodejs
+FROM heroku/nodejs
 
 CMD bin/web
