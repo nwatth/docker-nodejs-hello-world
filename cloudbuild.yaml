@@ -6,9 +6,9 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA'
+      - 'asia.gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
       - '-t'
-      - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:latest'
+      - 'asia.gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest'
       - '.'
 
   - id: Generate manifest
@@ -18,13 +18,15 @@ steps:
       - '-c'
       - |
         sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
+        sed "s/CONTAINER_CLUSTER/${_CLOUDSDK_CONTAINER_CLUSTER}/g" | \
+        sed "s/IMAGE_NAME/${_IMAGE_NAME}/g" | \
         sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml
 
   - id: Deploy
     name: 'gcr.io/cloud-builders/kubectl'
     env:
-      - 'CLOUDSDK_COMPUTE_REGION=asia-southeast1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=docker-nodejs-hello-world'
+      - 'CLOUDSDK_COMPUTE_REGION=$_CLOUDSDK_COMPUTE_REGION'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
     args:
       - 'apply'
       - '-f'
@@ -34,4 +36,4 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-  - 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world'
+  - 'asia.gcr.io/$PROJECT_ID/$_IMAGE_NAME'

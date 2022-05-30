@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sandbox-dev-app-1
+  name: CONTAINER_CLUSTER
   labels:
-    app: sandbox-dev-app-1
+    app: CONTAINER_CLUSTER
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sandbox-dev-app-1
+      app: CONTAINER_CLUSTER
   template:
     metadata:
       labels:
-        app: sandbox-dev-app-1
+        app: CONTAINER_CLUSTER
     spec:
       containers:
-      - name: hello-cloudbuild
-        image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/docker-nodejs-hello-world:COMMIT_SHA
+      - name: CONTAINER_CLUSTER
+        image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/IMAGE_NAME:COMMIT_SHA
         ports:
         - containerPort: 3000
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: sandbox-dev-app-1
+  name: CONTAINER_CLUSTER
 spec:
   selector:
-    app: sandbox-dev-app-1
+    app: CONTAINER_CLUSTER
   ports:
   - protocol: TCP
     port: 80
