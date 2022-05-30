@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: 'BUILD'
-    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/docker-nodejs-hello-world', '.']
+    args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world:$SHORT_SHA', '.']
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
-images: ['asia-southeast1-docker.pkg.dev/$PROJECT_ID/docker-nodejs-hello-world']
+images: ['asia.gcr.io/$PROJECT_ID/docker-nodejs-hello-world']
